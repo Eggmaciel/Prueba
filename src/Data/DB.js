@@ -12,6 +12,7 @@ const pool = mysql.createPool({
     queueLimit:0
 })
 
+export default pool
 /*export const db : pred[] = [
     {
         id: 1,
@@ -65,4 +66,3 @@ const pool = mysql.createPool({
     },
 ]*/
 
-export default pool

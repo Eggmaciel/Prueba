@@ -3,7 +3,7 @@ async function modelo1(val){
     const input = document.getElementById('input'+val).value.split(',').map(Number);
 
     // Enviar los datos a la API Flask usando Fetch
-    const response = await fetch('http://localhost:5000/predict', {
+    const response = await fetch('http://localhost:5002/api/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -14,6 +14,8 @@ async function modelo1(val){
     });
 
     const data = await response.json();
+
+    return data.predicted_class
 
     // Mostrar el resultado de la predicción
         

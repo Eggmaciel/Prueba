@@ -2,7 +2,7 @@ import { pred } from "../types";
 
 export const obtenerDatos = async() : Promise<pred[]> => {
     try {
-        const response = await fetch('http://localhost:5001/api/modelo')
+        const response = await fetch('http://localhost:5002/api/modelo')
         if(!response.ok){
             throw new Error('Error al obtener datos')
         }
@@ -13,3 +13,30 @@ export const obtenerDatos = async() : Promise<pred[]> => {
         throw error
     }
 } 
+
+export const obtenerPrediccion = async(val: number[]) : Promise<number> => {
+
+    
+    try {
+        const response = await fetch('http://localhost:5002/api/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                input: val
+            })
+        }); 
+        if(!response.ok){
+            throw new Error('Error al obtener datos')
+        }
+        
+        const data = await response.json();
+        
+        return data.predicted_class
+    } catch(error){
+        console.error('Error:', error)
+        throw error
+    }
+} 
+

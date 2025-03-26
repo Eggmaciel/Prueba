@@ -5,7 +5,7 @@ from flask_cors import CORS
 #import numpy
 
 class Scrum(nn.Module):
-  def __init__(self, input_features, output_features, hidden_units=8):
+  def __init__(self, input_features, output_features, hidden_units=10):
     super().__init__()
     self.linear_layer_stack = nn.Sequential(
         nn.Linear(in_features=input_features, out_features=hidden_units),
@@ -22,7 +22,7 @@ modelV1 = Scrum(input_features=5,
                     output_features=5,
                     hidden_units=10)
 
-modelV1.load_state_dict(torch.load(f=r"C:\Users\Macie\Desktop\modelos/02_modular.pth"))
+modelV1.load_state_dict(torch.load(f=r"C:\Users\Macie\Desktop\Modular/02_modular.pth"))
 modelV1.eval()
 
 app = Flask(__name__)
@@ -60,4 +60,4 @@ def predict():
 
 # Iniciar el servidor Flask
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5002)
