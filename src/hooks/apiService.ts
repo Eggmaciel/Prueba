@@ -17,7 +17,7 @@ export const obtenerDatos = async() : Promise<pred[]> => {
 export const obtenerPrediccion = async(val: number[]) : Promise<number> => {
 
     
-    try {
+    try { //Se hace un fetch hacia el modelo predictivo y se retorna la prediccion
         const response = await fetch('http://localhost:5002/api/predict', {
             method: 'POST',
             headers: {
